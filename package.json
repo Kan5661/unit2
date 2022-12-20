@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "commit": "git add . && git commit -m 'seed data' && git push"
+    "commit": "git add . && git commit -m 'api get' && git push"
   },
   "keywords": [],
   "author": "",
