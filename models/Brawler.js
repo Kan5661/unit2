@@ -8,11 +8,10 @@ const brawlerSchema = new Schema({
             id: Number,
             avartarId: Number,
             name: String,
-            version: 1,
             link: String,
             imgUrl: String,
             class: {
-                id: 1,
+                id: Number,
                 name: String
             },
             rarity: {
@@ -39,3 +38,5 @@ const brawlerSchema = new Schema({
         }
     ]
 })
+
+export default mongoose.model('Brawlers', brawlerSchema)

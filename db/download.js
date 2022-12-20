@@ -5,7 +5,7 @@ const brawlers = "https://api.brawlapi.com/v1/brawlers"
 const events = 'https://api.brawlapi.com/v1/events'
 const maps = 'https://api.brawlapi.com/v1/maps'
 const modes = 'https://api.brawlapi.com/v1/gamemodes'
-const icons = 'https://api.brawlapi.com/v1/icons'
+
 
 fetch(brawlers)
     .then((response) => {
@@ -23,7 +23,7 @@ fetch(events)
         return response.json()
     })
     .then((data) => {
-        fsPromises.writeFile("events.json", JSON.stringify(data))
+        fsPromises.writeFile("../models/events.json", JSON.stringify(data))
     })
     .catch((error) => {
         console.error(error)
@@ -34,7 +34,7 @@ fetch(maps)
         return response.json()
     })
     .then((data) => {
-        fsPromises.writeFile("maps.json", JSON.stringify(data))
+        fsPromises.writeFile("../models/maps.json", JSON.stringify(data))
     })
     .catch((error) => {
         console.error(error)
@@ -45,18 +45,7 @@ fetch(modes)
         return response.json()
     })
     .then((data) => {
-        fsPromises.writeFile("modes.json", JSON.stringify(data))
-    })
-    .catch((error) => {
-        console.error(error)
-    })
-
-fetch(icons)
-    .then((response) => {
-        return response.json()
-    })
-    .then((data) => {
-        fsPromises.writeFile("icons.json", JSON.stringify(data))
+        fsPromises.writeFile("../models/modes.json", JSON.stringify(data))
     })
     .catch((error) => {
         console.error(error)
