@@ -3,8 +3,6 @@ import mongoose from 'mongoose'
 let Schema = mongoose.Schema
 
 const brawlerSchema = new Schema({
-    list: [
-        {
             id: Number,
             avartarId: Number,
             name: String,
@@ -35,8 +33,6 @@ const brawlerSchema = new Schema({
                     imgUrl: String
                 }
             ]
-        }
-    ]
 })
 
 export default mongoose.model('Brawlers', brawlerSchema)

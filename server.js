@@ -1,13 +1,15 @@
 import express from 'express'
 import fetch from 'node-fetch'
-import mongoose from 'mongoose'
+import mongoose, { Model } from 'mongoose'
 import connection from './connection.js'
 import Brawler from './models/Brawler.js'
 import Mode from './models/Mode.js'
-import Event from './models/Event.js'
 import Map from './models/Map.js'
+import path from 'path'
 
+const __dirname = path.resolve(path.dirname(''))
 const app = express()
+app.use(express.static('public'))
 app.use(express.json())
 
 const PORT = 3400
@@ -17,7 +19,7 @@ app.listen(PORT, () => {
 })
 
 app.get('/', (req, res) => {
-    res.send('hello world')
+    res.sendFile(path.join(__dirname, 'documentation.html'));
 })
 
 // GET
@@ -26,9 +28,6 @@ app.get('/brawlers', async (req, res) => {
 })
 app.get('/modes', async (req, res) => {
     res.json(await Mode.find({}))
-})
-app.get('/events', async (req, res) => {
-    res.json(await Event.find({}))
 })
 app.get('/maps', async (req, res) => {
     res.json(await Map.find({}))
@@ -41,16 +40,11 @@ app.post('/maps', async (req, res) => {
         { $push: {list: req.body}}
     ))
 })
-app.post('/events', async (req, res) => {
-    res.json(await Event.findOneAndUpdate(
-        {},
-        { $push: {list: req.body}}
-    ))
-})
+
 app.post('/modes', async (req, res) => {
     res.json(await Mode.findOneAndUpdate(
         {},
-        { $push: {active: req.body}}
+        { $push: {upcoming: req.body}}
     ))
 })
 app.post('/brawlers', async (req, res) => {
@@ -63,7 +57,20 @@ app.post('/brawlers', async (req, res) => {
 // DELETE
 
 app.delete('/maps/:id',  async (req, res) => {
-    Map.findOneAndRemove(
-        {_id: req.params.id}
+    await Map.findOneAndDelete(
+        { _id: req.params.id }
     )
+    res.json(await Map.find({}))
+})
+app.delete('/brawlers/:id',  async (req, res) => {
+    await Brawler.findOneAndDelete(
+        { _id: req.params.id }
+    )
+    res.json(await Brawler.find({}))
+})
+app.delete('/mode/:id',  async (req, res) => {
+    await Model.findOneAndDelete(
+        { _id: req.params.id }
+    )
+    res.json(await Mode.find({}))
 })

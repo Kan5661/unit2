@@ -1,8 +1,6 @@
 import mongoose from 'mongoose'
 
 const mapSchema = new mongoose.Schema({
-    list: [
-        {
             id: Number,
             name: String,
             imageUrl: String,
@@ -16,8 +14,7 @@ const mapSchema = new mongoose.Schema({
                 name: String,
                 imageUrl: String
             }
-        }
-    ]
+      
 })
 
 export default mongoose.model('Maps', mapSchema)
