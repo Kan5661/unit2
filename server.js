@@ -12,7 +12,7 @@ const app = express()
 app.use(express.static('public'))
 app.use(express.json())
 
-const PORT = 3400
+const PORT = 3500
 
 app.listen(PORT, () => {
     console.log('listening to port 3400')
@@ -20,6 +20,9 @@ app.listen(PORT, () => {
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'documentation.html'));
+})
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'style.css'));
 })
 
 // GET
@@ -68,9 +71,32 @@ app.delete('/brawlers/:id',  async (req, res) => {
     )
     res.json(await Brawler.find({}))
 })
-app.delete('/mode/:id',  async (req, res) => {
-    await Model.findOneAndDelete(
+app.delete('/modes/:id',  async (req, res) => {
+    await Mode.findOneAndDelete(
         { _id: req.params.id }
     )
     res.json(await Mode.find({}))
 })
+
+// PUT 
+app.put('/brawlers/:id', async (req, res) => {
+    await Brawler.findOneAndUpdate(
+        {_id: req.params.id},
+        req.body
+    )
+    res.json(await Brawler.find({}))
+}) 
+app.put('/maps/:id', async (req, res) => {
+    await Map.findOneAndUpdate(
+        {_id: req.params.id},
+        req.body
+    )
+    res.json(await Map.find({}))
+}) 
+app.put('/modes/:id', async (req, res) => {
+    await Mode.findOneAndUpdate(
+        {_id: req.params.id},
+        req.body
+    )
+    res.json(await Mode.find({}))
+}) 
