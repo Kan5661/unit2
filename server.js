@@ -17,15 +17,13 @@ app.listen(PORT, () => {
     console.log(`listening to port ${PORT}`)
 })
 
+
 app.get('/', (req, res) => {
-    res.send('hello');
+    res.sendFile(path.join(__dirname, 'documentation.html'));
 })
-// app.get('/', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'documentation.html'));
-// })
-// app.get('/', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'style.css'));
-// })
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'style.css'));
+})
 
 // GET
 app.get('/brawlers', async (req, res) => {
