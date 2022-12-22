@@ -11,11 +11,10 @@ const __dirname = path.resolve(path.dirname(''))
 const app = express()
 app.use(express.static('public'))
 app.use(express.json())
-
-const PORT = 3500
+const PORT = process.env.PORT || 3500
 
 app.listen(PORT, () => {
-    console.log('listening to port 3400')
+    console.log(`listening to port ${PORT}`)
 })
 
 app.get('/', (req, res) => {
