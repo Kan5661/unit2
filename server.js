@@ -18,11 +18,14 @@ app.listen(PORT, () => {
 })
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'documentation.html'));
+    res.send('hello');
 })
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'style.css'));
-})
+// app.get('/', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'documentation.html'));
+// })
+// app.get('/', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'style.css'));
+// })
 
 // GET
 app.get('/brawlers', async (req, res) => {
