@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "commit": "git add . && git commit -m 'api put' && git push",
+    "commit": "git add . && git commit -m 'rail' && git push",
     "start": "node server.js",
     "seed": "node db/seed.js"
   },
