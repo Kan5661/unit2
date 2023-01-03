@@ -1,6 +1,6 @@
 ## **Brawl Stars API**
-Github repo: https://github.com/Kan5661/unit2
-Rails: https://unit2-production.up.railway.app/
+#### Github repo: https://github.com/Kan5661/unit2
+#### Rails: https://unit2-production.up.railway.app/
 
 ### **Endpoints**
 https://unit2-production.up.railway.app/brawlers
